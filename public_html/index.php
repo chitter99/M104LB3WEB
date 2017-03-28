@@ -1,6 +1,6 @@
 <?php
 
-die('Work in progress!');
+require_once(realpath(dirname(__FILE__) . "/../config.php"));
 
 ?>
 
