@@ -7,7 +7,7 @@ require_once(realpath(dirname(__FILE__) . "/../config.php"));
 <!DOCTYPE html>
 <html>
     <head>
-        <meta>
+        <title>Reservationssystem</title>
     </head>
     <body>
         <header>
