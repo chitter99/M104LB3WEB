@@ -8,6 +8,8 @@ require_once(realpath(dirname(__FILE__) . "/../config.php"));
 <html>
     <head>
         <title>Reservationssystem</title>
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+        <link rel="stylesheet" href="css/custom.css"/>
     </head>
     <body>
         <header>
