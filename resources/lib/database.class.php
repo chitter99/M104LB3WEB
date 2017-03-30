@@ -15,14 +15,14 @@ class Database
         $this->host = $arg1;
         $this->user = $arg2;
         $this->pass = $arg3;
-        $this->database = $arg4;<
+        $this->database = $arg4;
     }
 
     public function connect()
     {
         if($this->connected) $this->disconnect();
-        $mysqli = new mysqli($this->host, $this->user, $this->pass, $this->database);
-        if ($mysqli->connect_errno)
+        $this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->database);
+        if ($this->mysqli->connect_errno)
         {
             echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
         }
@@ -70,10 +70,11 @@ class Database
         foreach($data as $row=>$value)
         {
             $suffix = ($last == $value) ? "" : ", ";
-            $affected .= $row . $suffix;
+            $affected .= '`'.$row.'`'.$suffix;
             $values .=  $this->parseTypeSave($value) . $suffix;
         }
-        $sql = "INSERT INTO $table($affected) $values";
+        $sql = "INSERT INTO `$table`($affected) VALUES ($values);";
+        echo $sql;
         return $this->query($sql);
     }
 

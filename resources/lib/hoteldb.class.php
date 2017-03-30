@@ -1,12 +1,13 @@
 <?php
 
-require_once(realpath(dirname(__FILE__) . "/database.class.php"));
+require_once("database.class.php");
 
 class HotelDB extends Database
 {
+
     public function build()
     {
-        $this->queryFile(realpath($RESOURCES_PATH . '/db/build.sql'));
+        $this->queryFile(realpath(RESOURCES_PATH . '/db/build.sql'));
     }
 
     public function seed()
@@ -25,6 +26,8 @@ class HotelDB extends Database
         $this->insert("roomStatus", ['status' => 'avariable']);
         $this->insert("roomStatus", ['status' => 'rent']);
         $this->insert("roomStatus", ['status' => 'closed']);
+
+        return;
         // tbl.roomType
         $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => '']);
         $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => '']);
@@ -42,6 +45,10 @@ class HotelDB extends Database
     {
         return $this->query("SELECT * FROM RentStatus WHERE ".$filter);
     }
+    public function FilterRentStatusArr($filter)
+    {
+        return $this->FilterRoomStatus($filter)->fetch_all(MYSQLI_ASSOC);
+    }
     // tbl.InvoiceStatus
     public function GetInvoiceStatus()
     {
@@ -51,6 +58,10 @@ class HotelDB extends Database
     {
         return $this->query("SELECT * FROM InvoiceStatus WHERE ".$filter);
     }
+    public function FilterInvoiceStatusArr($filter)
+    {
+        return $this->FilterRoomStatus($filter)->fetch_all(MYSQLI_ASSOC);
+    }
     // tbl.RoomStatus
     public function GetRoomStatus()
     {
@@ -59,6 +70,10 @@ class HotelDB extends Database
     public function FilterRoomStatus($filter="1=1")
     {
         return $this->query("SELECT * FROM RoomStatus WHERE ".$filter);
+    }
+    public function FilterRoomStatusArr($filter="1=1")
+    {
+        return $this->FilterRoomStatus($filter)->fetch_all(MYSQLI_ASSOC);
     }
 }
 
