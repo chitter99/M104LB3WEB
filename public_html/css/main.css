@@ -1,0 +1,292 @@
+/* 
+ Hotel Vallora
+ Author: Aaron Schmid
+ Date: 26.10.2016
+ Version: 1.0
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Yellowtail'); /* Font for titles */
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+	font-family: 'Josefin Sans', arial, verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-family: 'Yellowtail', cursive;
+	font-size: 24px;
+	font-size: x-large;
+    font-variant: small-caps;
+	color: #b99b3d;
+}
+
+header h1 {
+	color: #C5A643;
+	font-size: 26px;
+	font-size: xx-large;
+	margin-left: 50px;
+	display: inline;
+	line-height: 250%;
+}
+
+h2 {
+	font-family: 'Yellowtail', cursive;
+	font-size: larger;
+    font-variant: small-caps;
+	color: #a0883c;
+}
+
+h3 {
+	
+}
+
+a {
+	text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+
+/* Navigation */
+
+nav {
+	float: right;
+	margin-right: 30px;
+	overflow: hidden;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	float: left;
+}
+
+nav a {
+	/*font-family: 'Yellowtail', cursive;*/
+	display: block;
+	float: left;
+    color: white;
+    text-align: center;
+    padding: 34px 16px;
+    text-decoration: none;
+	font-variant: small-caps;
+    font-size: 15px;
+}
+
+nav a:after {
+	display: block;
+	content: "";
+	border-bottom: solid 3px #C5A643;  
+	transform: scaleX(0);
+	transition: transform 250ms ease-in-out;
+}
+nav a:hover:after {
+	transform: scaleX(1);
+}
+
+nav a:hover {
+	color: #C5A643;
+}
+
+header {
+	z-index: 1000;
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	color: white;
+	background-color: black;
+}
+
+article, footer div {
+	padding-left: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+	margin-bottom: 100px;
+}
+
+article:first-of-type {
+	margin-top: 60px;
+}
+
+section#image {
+	background-image: url("../img/hotelnew.jpg");
+	background-repeat: no-repeat;
+	background-position: center top 0px;
+    background-attachment: fixed;
+	background-size: cover;
+	height: 100vh;
+}
+
+section#image h1 {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: white;
+	font-size: 3em;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+footer {
+	position: relative;
+	bottom: 0px;
+	color: white;
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	background-color: black;
+}
+
+ul.list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+ul.list li {
+	
+}
+
+.anchor: {
+	content: "";
+	display: none;
+}
+
+.space {
+	content: "";
+	width: 100%;
+	height: 1px;
+	margin-bottom: 50px;
+}
+
+.gallery {
+	margin-left: 20px;
+}
+
+.gallery img {
+	z-index: 0;
+	max-width: 18em;
+    height: 15em;
+	object-fit: cover; /* IE? */
+	transition: all .3s ease-out;
+}
+
+.gallery img:hover {
+	z-index: 50;
+	transform: scale(2);
+}
+
+.image-full {
+	width: 100%;
+}
+
+img {
+	transition: all .3s ease-out;
+}
+img:hover {
+	z-index: 50;
+	transform: scale(2);
+}
+
+#gallery-events img {
+	max-width: 16em;
+}
+
+#gallery-guestrooms img {
+	max-width: 21em;
+}
+
+/* Form */
+
+form {
+	
+}
+
+form input {
+	box-sizing: border-box;
+	border-color: #cccccc;
+	border-style: solid;
+	border-width: 1px;
+	padding: 6px;
+	border-radius: 0px;
+	margin-right: 20px;
+	width: 15em;
+	font-family: 'Josefin Sans', arial, verdana, sans-serif;
+}
+
+form input[type=submit] {
+	width: 47.5em;
+}
+
+
+form.form-list {
+	
+}
+
+form .title {
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+form .required_notification {
+	color: red;
+	font-size: small;
+}
+
+form.form-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+form.form-list label {
+	width: 100px;
+	display: inline-block;
+}
+
+ul.list-vertical li {
+	margin: 0;
+	margin: 10px 20px;
+}
+
+ul.list-horizontal li {
+	margin: 0;
+	display: inline-block;
+}
+
+form.form-list ul li:first-of-type {
+	margin: 0;
+}
+
+/* Table */
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+	font-size: larg;
+}
+
+caption {
+	font-weight: bold;
+}
+
+tr, td {
+	padding-right: 10px;
+}
+
+td {
+	border-bottom: #b99b3d 1px solid;
+}
+
+td.centered {
+	text-align: center;
+}
+
+

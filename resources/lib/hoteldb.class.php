@@ -18,62 +18,77 @@ class HotelDB extends Database
         $this->insert("rentStatus", ['status' => 'paid']);
         $this->insert("rentStatus", ['status' => 'canceled']);
         // tbl.invoiceStatus
-        $this->insert("invoiceStatus", ['status' => 'open']);
+        $this->insert("invoiceStatus", ['status' => 'registered']);
         $this->insert("invoiceStatus", ['status' => 'sent']);
         $this->insert("invoiceStatus", ['status' => 'paid']);
         $this->insert("invoiceStatus", ['status' => 'canceled']);
         // tbl.roomStatus
         $this->insert("roomStatus", ['status' => 'avariable']);
-        $this->insert("roomStatus", ['status' => 'rent']);
         $this->insert("roomStatus", ['status' => 'closed']);
 
-        return;
         // tbl.roomType
         $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => '']);
         $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => '']);
         // tbl.room
-        $this->insert("room", ['number' => 100, 'type' => 1, 'status' => 1]);
-        $this->insert("room", ['number' => 101, 'type' => 2, 'status' => 1]);
+        $this->insert("room", ['roomNumber' => 100, 'fk_roomType' => 1, 'fk_roomStatus' => 1]);
+        $this->insert("room", ['roomNumber' => 101, 'fk_roomType' => 2, 'fk_roomStatus' => 1]);
     }
 
-    // tbl.RentStatus
-    public function GetRentStatus()
+    // tbl.rentStatus
+    public function GetAllRentStatus()
     {
-        return $this->FilterRentStatus();
+        return $this->SelectRentStatus()->fetch_all(MYSQLI_ASSOC);
     }
-    public function FilterRentStatus($filter="1=1")
+    public function GetRentStatus($id)
     {
-        return $this->query("SELECT * FROM RentStatus WHERE ".$filter);
+        return $this->SelectRentStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC);
     }
-    public function FilterRentStatusArr($filter)
+    public function SelectRentStatus($where=null)
     {
-        return $this->FilterRoomStatus($filter)->fetch_all(MYSQLI_ASSOC);
+        return $this->select('rentStatus', ['*'], $where);
     }
-    // tbl.InvoiceStatus
-    public function GetInvoiceStatus()
+    // tbl.invoiceStatus
+    public function GetAllInvoiceStatus()
     {
-        return $this->FilterInvoiceStatus();
+        return $this->SelectInvoiceStatus()->fetch_all(MYSQLI_ASSOC);
     }
-    public function FilterInvoiceStatus($filter="1=1")
+    public function GetInvoiceStatus($id)
     {
-        return $this->query("SELECT * FROM InvoiceStatus WHERE ".$filter);
+        return $this->SelectInvoiceStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC);
     }
-    public function FilterInvoiceStatusArr($filter)
+    public function SelectInvoiceStatus($where=null)
     {
-        return $this->FilterRoomStatus($filter)->fetch_all(MYSQLI_ASSOC);
+        return $this->select('invoiceStatus', ['*'], $where);
     }
-    // tbl.RoomStatus
-    public function GetRoomStatus()
+    // tbl.roomStatus
+    public function GetAllRoomStatus()
     {
-        return $this->FilterRoomStatus();
+        return $this->SelectRoomStatus()->fetch_all(MYSQLI_ASSOC);
     }
-    public function FilterRoomStatus($filter="1=1")
+    public function GetRoomStatus($id)
     {
-        return $this->query("SELECT * FROM RoomStatus WHERE ".$filter);
+        return $this->SelectRoomStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC);
     }
-    public function FilterRoomStatusArr($filter="1=1")
+    public function SelectRoomStatus($where=null)
     {
-        return $this->FilterRoomStatus($filter)->fetch_all(MYSQLI_ASSOC);
+        return $this->select('roomStatus', ['*'], $where);
+    }
+    // tbl.roomType
+    public function GetAllRoomType() {
+        return $this->SelectRoomType()->fetch_all(MYSQLI_ASSOC);
+    }
+    public function GetRoomType($id) {
+        return $this->SelectRoomType(['id' => $id])->fetch_all(MYSQLI_ASSOC);
+    }
+    public function SelectRoomType($where=null) {
+        return $this->select('roomType', ['*'], $where);
+    }
+    // tbl.room
+    public function GetAllRoom() {
+
+    }
+    public function GetRoom($id) {
+
     }
 }
 

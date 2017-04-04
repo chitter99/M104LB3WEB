@@ -19,7 +19,7 @@ function GetDB()
 {
     global $config;
     require_once LIBRARY_PATH . '/hoteldb.class.php';
-    return new HotelDB($config['db']['host'], $config['db']['user'], $config['db']['passs'], $config['db']['database']);
+    return new HotelDB($config['db']['host'], $config['db']['user'], $config['db']['pass'], $config['db']['database']);
 }
 
 ?>

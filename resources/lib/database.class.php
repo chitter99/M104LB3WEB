@@ -24,7 +24,7 @@ class Database
         $this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->database);
         if ($this->mysqli->connect_errno)
         {
-            echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+            echo "Failed to connect to MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
         $this->connected = true;
     }
@@ -32,6 +32,7 @@ class Database
     public function disconnect()
     {
         if(!$this->connected) return;
+        $this->mysqli->disconnect();
         $this->connected = false;
     }
 
@@ -41,6 +42,30 @@ class Database
         return $this->mysqli->query($sql);
     }
 
+    public function select($table, $columnsArr, $whereArr=null, $order=null)
+    {
+        $sql = "SELECT ";
+        $last = end($columnsArr);
+        foreach($columnsArr as $co)
+        {
+            if($co == "*") {
+                $sql = $sql . $co . ' ';
+            } else {
+                $sql = $sql . '`' . $co . '`' . ($last == $co ? ' ' : ', ');
+            }
+        }
+        $sql .= "FROM $table ";
+        if($whereArr != null) {
+            $sql .= "WHERE ";
+            $last = end($whereArr);
+            foreach($whereArr as $key=>$value)
+            {
+                $sql = $sql . '`' . $co . '` ' . (gettype($value) == "string" ? 'LIKE' : '=') . ' ' . parseTypeSave($value) . ($last == $co ? ' ' : ', ');
+            }
+        }
+        return $this->query($sql . ";");
+    }
+
     public function queryFile($file)
     {
 
@@ -48,7 +73,7 @@ class Database
 
     public function execStoredProcedure($name, $parameters)
     {
-
+        $this->query();
     }
 
     public function parseTypeSave($value)
