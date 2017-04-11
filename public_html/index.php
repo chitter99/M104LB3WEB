@@ -10,7 +10,6 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
     <meta charset="UTF-8">
     <title>Hotel Vallora | Wunderschönes Hotel</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/animations.css" />
 </head>
 <body>
 <header>
@@ -20,7 +19,7 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
             <li><a href="#main">Hotel</a></li>
             <li><a href="#rooms">Zimmer</a></li>
             <li><a href="#path">Wegbeschreibung</a></li>
-            <li><a href="#events">Ausflüge</a></li>
+            <li><a href="rooms.php">Buchen</a></li>
         </ul>
     </nav>
 </header>
@@ -30,19 +29,19 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 <section id="image"><h1>Willkommen beim Hotel Vallora</h1></section>
 
 <section>
-    <article id="main">
-        <h1>Unser Hotel</h1>
-        <p>Bei Ihrem nächsten Aufenthalt in unserer Gegend würden wir Sie gern persönlich begrüßen und mit unserem freundlichen und kompetenten Service verwöhnen.</p>
-    </article>
+  <article id="main">
+    <h1>Unser Hotel</h1>
+    <p>Bei Ihrem nächsten Aufenthalt in unserer Gegend würden wir Sie gern persönlich begrüßen und mit unserem freundlichen und kompetenten Service verwöhnen.</p>
+  </article>
 
     <article id="rooms">
-        <h1>Zimmer</h1>
-        <div class="gallery" id="gallery-guestrooms">
-            <a href="#roomsjunior"><img src="img/guestrooms/room1.jpg" alt="Unsere junior suite" /></a>
-            <img src="img/guestrooms/room2.jpg" alt="" />
-            <img src="img/guestrooms/room3.jpg" alt="" />
-            <img src="img/guestrooms/room4.jpg" alt="Das Beste vom Besten, die delux suite mit Meer Blick." />
-        </div>
+      <h1>Zimmer</h1>
+      <div class="gallery" id="gallery-guestrooms">
+          <a href="#roomsjunior"><img src="img/guestrooms/room1.jpg" alt="Unsere junior suite" /></a>
+          <img src="img/guestrooms/room2.jpg" alt="" />
+          <img src="img/guestrooms/room3.jpg" alt="" />
+          <img src="img/guestrooms/room4.jpg" alt="Das Beste vom Besten, die delux suite mit Meer Blick." />
+      </div>
 
 
         <div class="space"></div>

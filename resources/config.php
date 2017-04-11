@@ -6,9 +6,9 @@ $config = [
     'absolute_path' => '...',
     'env' => 'dev', // dev, test, live
     'db' => [
-        'host' => 'localhost',
-        'user' => 'root',
-        'pass' => '',
+        'host' => '10.71.201.87',
+        'user' => 'hotel',
+        'pass' => '123456',
         'database' => 'hotel'
     ],
     'setup' => [
