@@ -87,6 +87,9 @@ class HotelDB extends Database
     public function SelectRoomType($where=null) {
         return $this->select('roomType', ['*'], $where);
     }
+    public function GetAllRoomTypeWhereRoomsAreAvariableInDataRange() {
+        return $this->query('SELECT * FROM roomType;');
+    }
     // tbl.room
     public function GetAllRoom() {
 
