@@ -1,7 +1,7 @@
 <?php
 
-class Database
-{
+class Database{
+
     protected $host;
     protected $user;
     protected $pass;

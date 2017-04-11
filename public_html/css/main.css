@@ -1,4 +1,4 @@
-/* 
+/*
  Hotel Vallora
  Author: Aaron Schmid
  Date: 26.10.2016
@@ -34,12 +34,12 @@ header h1 {
 h2 {
 	font-family: 'Yellowtail', cursive;
 	font-size: larger;
-    font-variant: small-caps;
+	font-variant: small-caps;
 	color: #a0883c;
 }
 
 h3 {
-	
+
 }
 
 a {
@@ -72,18 +72,18 @@ nav a {
 	/*font-family: 'Yellowtail', cursive;*/
 	display: block;
 	float: left;
-    color: white;
-    text-align: center;
-    padding: 34px 16px;
-    text-decoration: none;
+	color: white;
+	text-align: center;
+	padding: 34px 16px;
+	text-decoration: none;
 	font-variant: small-caps;
-    font-size: 15px;
+	font-size: 15px;
 }
 
 nav a:after {
 	display: block;
 	content: "";
-	border-bottom: solid 3px #C5A643;  
+	border-bottom: solid 3px #C5A643;
 	transform: scaleX(0);
 	transition: transform 250ms ease-in-out;
 }
@@ -135,6 +135,17 @@ section#image h1 {
 	transform: translate(-50%, -50%);
 }
 
+.pageTitle{
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: white;
+	font-size: 3em;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 footer {
 	position: relative;
 	bottom: 0px;
@@ -146,12 +157,12 @@ footer {
 }
 
 ul.list {
-	list-style-type: none;
+	list-style-: none;
 	padding: 0;
 	margin: 0;
 }
 ul.list li {
-	
+
 }
 
 .anchor: {
@@ -206,7 +217,7 @@ img:hover {
 /* Form */
 
 form {
-	
+
 }
 
 form input {
@@ -225,9 +236,12 @@ form input[type=submit] {
 	width: 47.5em;
 }
 
+.type{
+
+}
 
 form.form-list {
-	
+
 }
 
 form .title {
