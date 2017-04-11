@@ -9,7 +9,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Hotel Vallora | Wunderschönes Hotel</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  <meta charset="UTF-8">
 </head>
 <body>
 <header>
