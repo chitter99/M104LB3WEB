@@ -19,12 +19,12 @@ $search_to = isset($_GET['to']) ? $_GET['to'] : strtotime("+1 week");
         <button type="submit">Suchen</button>
     </form>
     <div id="roomlist">
-        <?php foreach($db->GetAllRoomsAvariableFromDateRange($search_from, $search_to) as $room): ?>
-        <article class="room">
-            <?php $type = $db->GetRoomType($room['fk_roomType']); ?>
-            <h1><?php echo $type['name'] . ' Nr. ' . $room['roomNumber']; ?></h1>
+        <?php foreach($db->GetAllRoomTypeWhereRoomsAreAvariableInDataRange() as $type): ?>
+        <article class="type">
+            <h1><?php echo $type['name'] ?></h1>
             <p><?php echo $type['description']; ?></p>
-            <button onclick="javascript: hotel.book(<?php echo $room['roomNumber']; ?>)">Book</button
+            <img src="<?php echo $type['image']; ?>" alt="<?php echo $type['name']; ?>" />
+            <button onclick="javascript: hotel.book(<?php echo $room['roomNumber']; ?>)">Buchen</button>
         </article>
         <?php endforeach; ?>
     </div>
