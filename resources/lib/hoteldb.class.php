@@ -25,15 +25,17 @@ class HotelDB extends Database
         // tbl.roomStatus
         $this->insert("roomStatus", ['status' => 'avariable']);
         $this->insert("roomStatus", ['status' => 'closed']);
-
-        // Test Data
-
         // tbl.roomType
         $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => '']);
         $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => '']);
-        // tbl.room
-        $this->insert("room", ['roomNumber' => 100, 'fk_roomType' => 1, 'fk_roomStatus' => 1]);
-        $this->insert("room", ['roomNumber' => 101, 'fk_roomType' => 2, 'fk_roomStatus' => 1]);
+
+        if(!isset($config)) require_once './../config.php';
+        if($config['env'] == 'dev') {
+            // tbl.room
+            $this->insert("room", ['roomNumber' => 100, 'fk_roomType' => 1, 'fk_roomStatus' => 1]);
+            $this->insert("room", ['roomNumber' => 101, 'fk_roomType' => 1, 'fk_roomStatus' => 2]);
+            $this->insert("room", ['roomNumber' => 102, 'fk_roomType' => 2, 'fk_roomStatus' => 1]);
+        }
     }
 
     // tbl.rentStatus
