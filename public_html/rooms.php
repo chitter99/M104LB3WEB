@@ -3,8 +3,11 @@
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 $db = GetDB();
 
-$search_from = isset($_GET['form']) ? $_GET['form'] : time();
-$search_to = isset($_GET['to']) ? $_GET['to'] : strtotime("+1 week");
+$search_from = isset($_GET['form']) ? strtotime($_GET['form']) : time();
+$search_to = isset($_GET['to']) ? strtotime($_GET['to']) : strtotime("+1 week");
+
+$_SESSION['form']['searchroom']['from'] = $search_from;
+$_SESSION['form']['searchroom']['to'] = $search_to;
 
 ?>
 
@@ -19,7 +22,7 @@ $search_to = isset($_GET['to']) ? $_GET['to'] : strtotime("+1 week");
         <button type="submit">Suchen</button>
     </form>
     <div id="roomlist">
-        <?php foreach($db->GetAllRoomTypeWhereRoomsAreAvariableInDataRange() as $type): ?>
+        <?php foreach($db->GetAllRoomTypeWhereRoomsAreAvariableInDataRange($search_from, $search_to) as $type): ?>
         <article class="type">
             <h1><?php echo $type['name'] ?></h1>
             <p><?php echo $type['description']; ?></p>

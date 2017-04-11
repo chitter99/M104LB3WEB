@@ -1,7 +1,5 @@
-var hotel = (function() {
-    return new function() {
-        this.book = function(room) {
-            window.location.href = "book.php?room=" + room;
-        };
+var hotel = new (function() {
+    this.book = function(t) {
+        window.location.href = "book.php?type=" + t;
     };
-})();
+});
