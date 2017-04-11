@@ -26,6 +26,8 @@ class HotelDB extends Database
         $this->insert("roomStatus", ['status' => 'avariable']);
         $this->insert("roomStatus", ['status' => 'closed']);
 
+        // Test Data
+
         // tbl.roomType
         $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => '']);
         $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => '']);
@@ -41,7 +43,7 @@ class HotelDB extends Database
     }
     public function GetRentStatus($id)
     {
-        return $this->SelectRentStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC);
+        return $this->SelectRentStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC)[0];
     }
     public function SelectRentStatus($where=null)
     {
@@ -54,7 +56,7 @@ class HotelDB extends Database
     }
     public function GetInvoiceStatus($id)
     {
-        return $this->SelectInvoiceStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC);
+        return $this->SelectInvoiceStatus(['id' => $id])->fetch_all(MYSQLI_ASSOC)[0];
     }
     public function SelectInvoiceStatus($where=null)
     {
@@ -78,7 +80,7 @@ class HotelDB extends Database
         return $this->SelectRoomType()->fetch_all(MYSQLI_ASSOC);
     }
     public function GetRoomType($id) {
-        return $this->SelectRoomType(['id' => $id])->fetch_all(MYSQLI_ASSOC);
+        return $this->SelectRoomType(['id' => $id])->fetch_all(MYSQLI_ASSOC)[0];
     }
     public function SelectRoomType($where=null) {
         return $this->select('roomType', ['*'], $where);
@@ -89,6 +91,11 @@ class HotelDB extends Database
     }
     public function GetRoom($id) {
 
+    }
+    public function GetAllRoomsAvariableFromDateRange($from, $to)
+    {
+        $sql = "SELECT * FROM room";
+        return $this->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
 }
 

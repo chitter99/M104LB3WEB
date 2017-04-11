@@ -39,7 +39,9 @@ class Database
     public function query($sql)
     {
         if(!$this->connected) $this->connect();
-        return $this->mysqli->query($sql);
+        $res =  $this->mysqli->query($sql);
+        if(!$res) die("SQL Error: " . $this->mysqli->error);
+        return $res;
     }
 
     public function select($table, $columnsArr, $whereArr=null, $order=null)
@@ -60,7 +62,7 @@ class Database
             $last = end($whereArr);
             foreach($whereArr as $key=>$value)
             {
-                $sql = $sql . '`' . $co . '` ' . (gettype($value) == "string" ? 'LIKE' : '=') . ' ' . parseTypeSave($value) . ($last == $co ? ' ' : ', ');
+                $sql = $sql . '`' . $key . '` ' . (gettype($value) == "string" ? 'LIKE' : '=') . ' ' . $this->parseTypeSave($value) . ($last == $value ? ' ' : ', ');
             }
         }
         return $this->query($sql . ";");
@@ -111,6 +113,10 @@ class Database
             $sql .= $p . " AND ";
         }
         return $sql . "1=1";
+    }
+
+    public function dateToSQL($date) {
+        return "str_to_date('" + date("Y.m.d", $date) + "', '%Y.%m.%d')";
     }
 
     public function build() {}
