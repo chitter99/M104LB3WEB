@@ -7,7 +7,7 @@ class HotelDB extends Database
 
     public function build()
     {
-        $this->queryFile(realpath(RESOURCES_PATH . '/db/build.sql'));
+        $this->queryFile(realpath(RESOURCES_PATH . '/db/hotel.sql'));
     }
 
     public function seed()
@@ -29,7 +29,7 @@ class HotelDB extends Database
         $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => '']);
         $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => '']);
 
-        if(!isset($config)) require_once './../config.php';
+        if(!isset($config)) require './../config.php';
         if($config['env'] == 'dev') {
             // tbl.room
             $this->insert("room", ['roomNumber' => 100, 'fk_roomType' => 1, 'fk_roomStatus' => 1]);

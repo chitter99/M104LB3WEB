@@ -70,7 +70,7 @@ class Database
 
     public function queryFile($file)
     {
-
+        return $this->query(file_get_contents($file));
     }
 
     public function execStoredProcedure($name, $parameters)
@@ -101,7 +101,6 @@ class Database
             $values .=  $this->parseTypeSave($value) . $suffix;
         }
         $sql = "INSERT INTO `$table`($affected) VALUES ($values);";
-        echo $sql;
         return $this->query($sql);
     }
 
