@@ -4,6 +4,7 @@ $config = array(
     'hostname' => 'localhost',
     'absolute_host' => 'http://localhost:8888/',
     'absolute_path' => '...',
+    'env' => 'dev', // dev, test, live
     'db' => array(
         'host' => 'localhost',
         'user' => 'root',
