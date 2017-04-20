@@ -5,19 +5,27 @@ $db = GetDB();
 
 if(!$config['setup']['enabled']) die('Setup is disabled!');
 
-if(isset($_POST['confirm'])) {
+$pass = isset($_POST['confirm']) ? $_POST['confirm'] : $_GET['confirm'];
+if(isset($pass)) {
     header('Content-Type: application/json');
-    if($_POST['confirm'] != $config['setup']['passwd']) {
+    if($pass != $config['setup']['passwd']) {
         die(json_encode([
             'status' => 'failed',
-            'message' => 'password_not_match'
+            'message' => 'Password is wrong!'
         ]));
     } else {
+        try {
+            //$db->build();
+            $db->seed();
+        } catch(Exception $ex) {
+            die(json_encode([
+                'status' => 'failed',
+                'message' => $ex->getMessage()
+            ]));
+        }
         die(json_encode([
             'status' => 'success'
         ]));
-        $db->build();
-        $db->seed();
     }
 }
 

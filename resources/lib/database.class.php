@@ -40,29 +40,29 @@ class Database{
     {
         if(!$this->connected) $this->connect();
         $res =  $this->mysqli->query($sql);
-        if(!$res) die("SQL Error: " . $this->mysqli->error);
+        if(!$res) throw new Exception("SQL Error: " . $this->mysqli->error);
         return $res;
+    }
+
+    public function whereSqlCompare($key, $value) {
+        return '`' . $key . '` ' . (gettype($value) == "string" ? 'LIKE' : '=') . $this->parseTypeSave($value);
     }
 
     public function select($table, $columnsArr, $whereArr=null, $order=null)
     {
         $sql = "SELECT ";
-        $last = end($columnsArr);
-        foreach($columnsArr as $co)
-        {
-            if($co == "*") {
-                $sql = $sql . $co . ' ';
-            } else {
-                $sql = $sql . '`' . $co . '`' . ($last == $co ? ' ' : ', ');
-            }
+        if($columnsArr[0] == "*") {
+            $sql .= "* ";
+        } else {
+            $sql .= $this->parseArrayToSQLList($columnsArr, "`") . " ";
         }
         $sql .= "FROM $table ";
-        if($whereArr != null) {
+        if(isset($whereArr)) {
             $sql .= "WHERE ";
             $last = end($whereArr);
             foreach($whereArr as $key=>$value)
             {
-                $sql = $sql . '`' . $key . '` ' . (gettype($value) == "string" ? 'LIKE' : '=') . ' ' . $this->parseTypeSave($value) . ($last == $value ? ' ' : ', ');
+                $sql .= $this->whereSqlCompare($key, $value) . ($last == $value ? '' : ', ');
             }
         }
         return $this->query($sql . ";");
@@ -80,28 +80,28 @@ class Database{
 
     public function parseTypeSave($value)
     {
+        if($value == null) return "null";
         switch (gettype($value))
         {
             case "string": return "'".$value."'";
             case "object": return null;
-            case "array": return null;
+            case "array": return $this->parseArrayToSQLList($value, null);
             case "boolean": return $value ? "true" : "false";
             default: return $value;
         }
     }
 
+    public function parseArrayToSQLList($arr, $glue=null)
+    {
+        for($i = 0, $len = count($arr); $i < $len; ++$i) $arr[$i] = $glue == null ? $this->parseTypeSave($arr[$i]) : $glue . $arr[$i] . $glue;
+        return implode(",", $arr);
+    }
+
     public function insert($table, $data)
     {
-        $affected = $values = "";
-        $last = end($data);
-        foreach($data as $row=>$value)
-        {
-            $suffix = ($last == $value) ? "" : ", ";
-            $affected .= '`'.$row.'`'.$suffix;
-            $values .=  $this->parseTypeSave($value) . $suffix;
-        }
-        $sql = "INSERT INTO `$table`($affected) VALUES ($values);";
-        return $this->query($sql);
+        $sql = "INSERT INTO `$table`(" . $this->parseArrayToSQLList(array_keys($data), '`') . ") VALUES (" . $this->parseArrayToSQLList(array_values($data)) . ");";
+        if(!$this->query($sql)) return false;
+        return $this->mysqli->insert_id;
     }
 
     public function parameterToSqlFilter($para = ['1=1'])

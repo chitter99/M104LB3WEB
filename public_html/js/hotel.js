@@ -1,5 +1,5 @@
 var hotel = new (function() {
-    this.book = function(t) {
-        window.location.href = "book.php?type=" + t;
+    this.redirectToBooking = function(t, rf, rt) {
+        window.location.href = "book.php?type=" + t + "&from=" + rf + "&to=" + rt;
     };
 });

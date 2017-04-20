@@ -26,11 +26,18 @@ class HotelDB extends Database
         $this->insert("roomStatus", ['status' => 'avariable']);
         $this->insert("roomStatus", ['status' => 'closed']);
         // tbl.roomType
-        $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => '']);
-        $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => '']);
+        $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => 'Super Room']);
+        $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => 'Geilo diese RAUM <3']);
+        // tbl.title
+        $this->insert("title", ['title' => 'Frau']);
+        $this->insert("title", ['title' => 'Herr']);
+        // tbl.city
+        $this->insert("city", ['city' => 'Klosters', 'plz' => 9000]);
+        $this->insert("city", ['city' => 'AchtZehnAchtZehn', 'plz' => 1818]);
+        $this->insert("city", ['city' => 'Wetzikon', 'plz' => 8620]);
 
-        if(!isset($config)) require './../config.php';
-        if($config['env'] == 'dev') {
+        if(!function_exists("GetConfig")) require_once './../config.php';
+        if(GetConfig()['env'] == 'dev') {
             // tbl.room
             $this->insert("room", ['roomNumber' => 100, 'fk_roomType' => 1, 'fk_roomStatus' => 1]);
             $this->insert("room", ['roomNumber' => 101, 'fk_roomType' => 1, 'fk_roomStatus' => 2]);
@@ -77,6 +84,32 @@ class HotelDB extends Database
     {
         return $this->select('roomStatus', ['*'], $where);
     }
+    // tbl.title
+    public function GetAllTitle()
+    {
+        return $this->SelectTitle()->fetch_all(MYSQLI_ASSOC);
+    }
+    public function GetTitle($id)
+    {
+        return $this->SelectTitle(['id' => $id])->fetch_all(MYSQLI_ASSOC)[0];
+    }
+    public function SelectTitle($where=null)
+    {
+        return $this->select('title', ['*'], $where);
+    }
+    // tbl.city
+    public function GetAllCity()
+    {
+        return $this->SelectCity()->fetch_all(MYSQLI_ASSOC);
+    }
+    public function GetCity($id)
+    {
+        return $this->SelectCity(['id' => $id])->fetch_all(MYSQLI_ASSOC)[0];
+    }
+    public function SelectCity($where=null)
+    {
+        return $this->select('city', ['*'], $where);
+    }
     // tbl.roomType
     public function GetAllRoomType() {
         return $this->SelectRoomType()->fetch_all(MYSQLI_ASSOC);
@@ -94,14 +127,61 @@ class HotelDB extends Database
     public function GetAllRoom() {
 
     }
-    public function GetRoom($id) {
-
+    public function GetRoom($roomId)
+    {
+        return $this->SelectRoom(['id' => $roomId])->fetch_all(MYSQLI_ASSOC)[0];
     }
     public function GetAllRoomsAvariableFromDateRange($from, $to)
     {
         $sql = "SELECT * FROM room";
         return $this->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
+    public function GetIsRoom($roomId)
+    {
+        return $this->GetRoom($roomId) == null ? false : true;
+    }
+    public function SelectRoom($where=null)
+    {
+        return $this->select('room', ['*'], $where);
+    }
+    // tbl.Rent
+    public function InsertRent($roomId, $customerId, $bookFrom, $bookTo)
+    {
+        return $this->insert("rent", [
+            "rentFrom" => $bookFrom,
+            "rentTo" => $bookTo,
+            "days" => round(abs($bookTo-$bookFrom)/86400),
+            "registered" => time(),
+            "fk_customer" => $customerId,
+            "fk_rentstatus" => 1,
+            "fk_room" => $roomId
+        ]);
+    }
+
+    // tbl.Customer
+    public function InsertCustomer($name, $surname, $mail, $address, $cityId, $titleId, $phone=null, $birthday=null)
+    {
+        return $this->insert("customer", [
+            "name" => $name,
+            "surname" => $surname,
+            "mail" => $mail,
+            "address" => $address,
+            "fk_city" => $cityId,
+            "fk_title" => $titleId,
+            "phone" => $phone,
+            "birthday" => $birthday
+        ]);
+    }
+
+    // Misc Functions
+    public function RegisterRentForRoom($roomId, $customerArr, $bookFrom, $bookTo)
+    {
+        if(!$this->GetIsRoom($roomId)) return false;
+        $customerId = $this->InsertCustomer($customerArr['name'], $customerArr['surname'], $customerArr['mail'], $customerArr['address'], $customerArr['city'], $customerArr['title'], $customerArr['phone'], $customerArr['birthday']);
+        $rentId = $this->InsertRent($roomId, $customerId, $bookFrom, $bookTo);
+        return $rentId;
+    }
+
 }
 
 ?>

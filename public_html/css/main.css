@@ -312,7 +312,7 @@ form.form-list ul li:first-of-type {
 table {
 	border-collapse: collapse;
 	margin: 0 auto;
-	font-size: larg;
+	font-size: large;
 }
 
 caption {
@@ -331,4 +331,37 @@ td.centered {
 	text-align: center;
 }
 
+/* search form rooms */
+.feature-image {
+	float: left;
+	max-width: 16em;
+}
+.feature-text {
+	float: right;
+	max-width: 65%;
+	margin: 0;
+}
+.feature-submit {
+	float: right;
+}
 
+ul.breadcrumb {
+	padding: 10px 16px;
+	list-style: none;
+	background-color: #eee;
+	font-size: 17px;
+}
+ul.breadcrumb li {display: inline;}
+ul.breadcrumb li+li:before {
+	padding: 8px;
+	color: black;
+	content: "/\00a0";
+}
+ul.breadcrumb li a {
+	color: #0275d8;
+	text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+	color: #01447e;
+	text-decoration: underline;
+}

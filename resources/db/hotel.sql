@@ -8,8 +8,8 @@
 -- PHP-Version: 7.0.13
 
 SET FOREIGN_KEY_CHECKS=0;
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
+SET time_zone = '+00:00';
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -207,7 +207,8 @@ CREATE TABLE `roomstatus` (
 CREATE TABLE `roomtype` (
   `ID` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
-  `description` varchar(120) NOT NULL,
+  `description` TEXT,
+  `image` TEXT,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
