@@ -37,7 +37,7 @@ if(isset($pass)) {
     </head>
     <body>
         <input type="text" name="confirm" />
-        <button type="sumit">confirm</button>
+        <button type="submit">confirm</button>
         <script>
             $(document).ready(function() {
                 $('button').click(function() {
