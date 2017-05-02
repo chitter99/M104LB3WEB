@@ -26,13 +26,13 @@ class HotelDB extends Database
         $this->insert("roomStatus", ['status' => 'avariable']);
         $this->insert("roomStatus", ['status' => 'closed']);
         // tbl.roomType
-        $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => 'Super Room']);
-        $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => 'Geilo diese RAUM <3']);
+        $this->insert("roomType", ['name' => 'Einzelzimmer', 'price' => 85.0, 'description' => 'Die Hotelanlage zählt wohl zu den schönsten an der Algarve und ist ideal für Familien und junge Paare geeignet. Sie liegt zwischen Albufeira und Vilamoura, nur ca. 300m von den Stränden Falésia (Zugang über Treppen) entfernt und bietet somit beste Voraussetzungen für einen traumhaften Badeurlaub. Den Flughafen von Faro erreichen Sie nach ca. 40 Autominuten.']);
+        $this->insert("roomType", ['name' => 'Doppelzimmer', 'price' => 120.0, 'description' => 'Das Sport- und Ferienhotel liegt oberhalb des Meeres, inmitten einer großen Gartenanlage, mit direktem Zugang zum feinsandigen Strand „Praia da Falesia“. In ca. 500 m Entfernung befindet eine öffentliche Bar. Restaurants und Geschäfte erreichen Sie am Besten mit den PKW nach ca. 5 Minuten Fahrzeit. Nach Albufeira sind es ca. 13 km, zum Flughafen Faro etwa 35 km.']);
         // tbl.title
         $this->insert("title", ['title' => 'Frau']);
         $this->insert("title", ['title' => 'Herr']);
         // tbl.city
-        $this->insert("city", ['city' => 'Klosters', 'plz' => 9000]);
+        $this->insert("city", ['city' => 'Klosters', 'plz' => 7250]);
         $this->insert("city", ['city' => 'AchtZehnAchtZehn', 'plz' => 1818]);
         $this->insert("city", ['city' => 'Wetzikon', 'plz' => 8620]);
 

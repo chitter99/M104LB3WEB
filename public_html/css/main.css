@@ -203,7 +203,7 @@ img {
 }
 img:hover {
 	z-index: 50;
-	transform: scale(2);
+	transform: scale(1.5);
 }
 
 #gallery-events img {
