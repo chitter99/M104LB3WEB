@@ -15,7 +15,7 @@
 </head>
 <body>
 <header>
-  <a href="#top"><h1>Hotel Vallora</h1></a>
+  <a href="index.php"><h1>Hotel Vallora</h1></a>
   <nav>
     <ul>
       <li><a href="index.php#main">Hotel</a></li>

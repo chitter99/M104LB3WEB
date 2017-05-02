@@ -2,12 +2,17 @@
 
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 
+$db = GetDB();
+
+$db->GetAllRoomType();
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" lang="de">
     <title>Hotel Vallora | Wunderschönes Hotel</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
@@ -17,7 +22,7 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
     <nav>
         <ul>
             <li><a href="#main">Hotel</a></li>
-            <li><a href="#rooms">Zimmer</a></li>
+            <li><a href="#room">Zimmer</a></li>
             <li><a href="#path">Wegbeschreibung</a></li>
             <li><a href="rooms.php">Buchen</a></li>
         </ul>
@@ -37,57 +42,20 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
     <article id="rooms">
       <h1>Zimmer</h1>
       <div class="gallery" id="gallery-guestrooms">
-          <a href="#roomsjunior"><img src="img/guestrooms/room1.jpg" alt="Unsere junior suite" /></a>
+          <a href="#room"><img src="img/guestrooms/room1.jpg" alt="Unsere junior suite" /></a>
           <img src="img/guestrooms/room2.jpg" alt="" />
           <img src="img/guestrooms/room3.jpg" alt="" />
           <img src="img/guestrooms/room4.jpg" alt="Das Beste vom Besten, die delux suite mit Meer Blick." />
       </div>
-
-
-        <div class="space"></div>
-        <a class="anchor" id="roomsjunior"></a>
-        <h2>Junior Suite</h2>
-        <p>Unsere großzügigen Nichtraucherzimmer sind mit einem Doppelbett oder Einzelbetten ausgestattet und für max. 3 Personen buchbar.
-            Die Zimmer bieten die ideale Atmosphäre für einen entspannenden Aufenthalt in Winterthur für den Business- und den Freizeitgast.
-            Grosser Schrank und Spiegel.
-            Kabel-TV mit ca. 60 internationalen Sendern sowie einige Radiostationen.</p>
-
-        <table>
-            <caption>Junior Suite Übersicht</caption>
-            <tbody>
-            <tr>
-                <td>Dimensionen</td>
-                <td>16m<sup>2</sup></td>
-            </tr>
-            <tr>
-                <td>Schlafmöglichkeiten</td>
-                <td>Doppelbett, Optional + Einzelbett</td>
-            </tr>
-            <tr>
-                <td>Kosten pro Person/pro Nacht</td>
-                <td>160 SFr.</td>
-            </tr>
-            <tr>
-                <td>Meersicht möglich</td>
-                <td>Ja</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="space"></div>
-        <a class="anchor" id="roomssenior"></a>
-        <h2>Senior Suite</h2>
-        <p>Zef wfiw owp 3ri wkef ioj2o okwp kfpowefk pofopo43 p kpo kpo34k o34to34k  ok4p3k2'0lfkwe j wfjjf woe j!!!!</p>
-
-        <div class="space"></div>
-        <a class="anchor" id="roomsextra"></a>
-        <h2>Extra Suite</h2>
-        <p>Zef wfiw owp 3ri wkef ioj2o okwp kfpowefk pofopo43 p kpo kpo34k o34to34k  ok4p3k2'0lfkwe j wfjjf woe j!!!!</p>
-
-        <div class="space"></div>
-        <a class="anchor" id="roomsdelux"></a>
-        <h2>Delux Suite</h2>
-        <p>Zef wfiw owp 3ri wkef ioj2o okwp kfpowefk pofopo43 p kpo kpo34k o34to34k  ok4p3k2'0lfkwe j wfjjf woe j!!!!</p>
+      <div id="gallery-guestrooms">
+        <?php
+          foreach($db->GetAllRoomType() as $values){
+            echo '<h1>' . htmlspecialchars($values['name']) . '</h1>';
+            echo '<p>' . htmlspecialchars($values['description']) . '</p>';
+            echo '<img src="' . $values['image'] . '">';
+          }
+        ?>
+      </div>
     </article>
 
     <article id="booking">
@@ -185,7 +153,7 @@ require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
         <h1>Ausflüge</h1>
 
         <div class="gallery" id="gallery-events">
-            <a href="#eventhistory"><img src="img/events/castle.jpg" alt="Römersiedlung" /></a>
+              <a href="#eventhistory"><img src="img/events/castle.jpg" alt="Römersiedlung" /></a>
             <a href="#eventhistory"><img src="img/events/ruine.jpg" alt="Ruine der Kirche Sankt Peter" /></a>
             <a href="#eventhistory"><img src="img/events/kloster.jpg" alt="Kloster Maria Hilf" /></a>
         </div>
