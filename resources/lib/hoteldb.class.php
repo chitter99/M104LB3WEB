@@ -15,7 +15,8 @@ class HotelDB extends Database
         // tbl.rentStatus
         $this->insert("rentStatus", ['status' => 'registered']);
         $this->insert("rentStatus", ['status' => 'confirmed']);
-        $this->insert("rentStatus", ['status' => 'paid']);
+        $this->insert("rentStatus", ['status' => 'checked_in']);
+        $this->insert("rentStatus", ['status' => 'checked_out']);
         $this->insert("rentStatus", ['status' => 'canceled']);
         // tbl.invoiceStatus
         $this->insert("invoiceStatus", ['status' => 'registered']);
