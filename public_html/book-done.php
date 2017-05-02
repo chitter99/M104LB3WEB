@@ -16,7 +16,7 @@ $template_breadcrumbs = [
         'display' => 'Buchen'
     ],
     [
-        'link' => '',
+        'link' => 'index.php',
         'display' => 'Fertig'
     ]
 ];
