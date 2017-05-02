@@ -62,24 +62,38 @@ $template_breadcrumbs = [
                 <option value="<?php echo $title['ID']; ?>"><?php echo $title['title']; ?></option>
             <?php endforeach; ?>
         </select>
-        <lable for="surname">Vorname: </lable><input type="text" name="surname" />
-        <lable for="name">Nachname: </lable><input type="text" name="name" />
-        <lable for="mail">Mail: </lable><input type="text" name="mail" />
-        <lable for="addresse">Adresse: </lable><input type="text" name="address" />
-        <lable for="phone">Telefonnummer: </lable><input type="text" name="phone" />
-        <lable for="birthday">Geburtstag: </lable><input type="date" name="birthday" />
-        <lable for="city">Stadt: </lable>
-        <select name="city">
-            <?php foreach($db->GetAllCity() as $city): ?>
-            <option value="<?php echo $city['ID']; ?>"><?php echo $city['plz'] . ' ' . $city['city']; ?></option>
-            <?php endforeach; ?>
-        </select>
-        <lable for="room">Room: </lable>
-        <select name="room">
-            <?php foreach($db->SelectRoom(['fk_roomType' => $roomType['ID']])->fetch_all(MYSQLI_ASSOC) as $room): ?>
-                <option value="<?php echo $room['ID']; ?>"><?php echo $room['roomNumber']; ?></option>
-            <?php endforeach; ?>
-        </select>
+        <lable for="surname">Vorname:
+          <input type="text" name="surname" />
+        </lable>
+        <lable for="name">Nachname:
+          <input type="text" name="name" />
+        </lable>
+        <lable for="mail">Mail:
+          <input type="text" name="mail" />
+        </lable>
+        <lable for="phone">Telefonnummer:
+          <input type="text" name="phone" />
+        </lable>
+        <lable for="addresse">Adresse:
+          <input type="text" name="address" />
+        </lable>
+        <lable for="birthday">Geburtstag:
+          <input type="date" name="birthday" />
+        </lable>
+        <lable for="city">Stadt:
+          <select name="city">
+              <?php foreach($db->GetAllCity() as $city): ?>
+              <option value="<?php echo $city['ID']; ?>"><?php echo $city['plz'] . ' ' . $city['city']; ?></option>
+              <?php endforeach; ?>
+          </select>
+        </lable>
+        <lable for="room">Room:
+          <select name="room">
+              <?php foreach($db->SelectRoom(['fk_roomType' => $roomType['ID']])->fetch_all(MYSQLI_ASSOC) as $room): ?>
+                  <option value="<?php echo $room['ID']; ?>"><?php echo $room['roomNumber']; ?></option>
+              <?php endforeach; ?>
+          </select>
+        </lable>
         <button type="submit">Buchen</button>
     </form>
 </article>
