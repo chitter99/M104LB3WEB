@@ -93,8 +93,19 @@ class Database{
 
     public function parseArrayToSQLList($arr, $glue=null)
     {
-        for($i = 0, $len = count($arr); $i < $len; ++$i) $arr[$i] = $glue == null ? $this->parseTypeSave($arr[$i]) : $glue . $arr[$i] . $glue;
-        return implode(",", $arr);
+      //for($i = 0, $len = count($arr); $i < $len; ++$i) $arr[$i] = $glue == null ? $this->parseTypeSave($arr[$i]) : $glue . $arr[$i] . $glue;
+      for($i=0;$i < count($arr);$i++)
+      {
+        if($glue == null)
+        {
+          $arr[$i] = $this->parseTypeSave($arr[$i]);
+        }
+        else
+        {
+          $arr[$i] = $glue . $arr[$i] . $glue;
+        }
+      }
+      return implode(",", $arr);
     }
 
     public function insert($table, $data)

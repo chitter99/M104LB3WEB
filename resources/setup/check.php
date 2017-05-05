@@ -5,7 +5,7 @@ $db = GetDB();
 
 ?>
 
-<html>
+    <html>
     <body>
         <select>
             <?php foreach($db->GetAllInvoiceStatus() as $status): ?>
