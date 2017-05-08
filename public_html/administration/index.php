@@ -1,12 +1,12 @@
 <?php
 
-require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
-$db = GetDB();
+require_once(realpath(dirname(__FILE__) . "/../../resources/config.php"));
 
 ?>
 
-<hmtl>
-    <body>
-        <
-    </body>
-</hmtl>
+<?php require "./../../template/admin/header.php"; ?>
+<atricle id="main">
+    <p>Welcome to the Administration Site.</p>
+</atricle>
+<?php require "./../../template/admin/footer.php"; ?>
+
