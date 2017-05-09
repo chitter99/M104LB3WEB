@@ -147,17 +147,16 @@ section#image h1 {
 }
 
 footer {
-	position: relative;
-	bottom: 0px;
 	color: white;
 	width: 100%;
 	padding-top: 50px;
 	padding-bottom: 20px;
 	background-color: black;
+	clear: both;
 }
 
 ul.list {
-	list-style-: none;
+	list-style: none;
 	padding: 0;
 	margin: 0;
 }
@@ -165,7 +164,7 @@ ul.list li {
 
 }
 
-.anchor: {
+.anchor{
 	content: "";
 	display: none;
 }
@@ -217,7 +216,21 @@ img:hover {
 /* Form */
 
 form {
+	float: none;
+}
 
+.book_form_name{
+	border: none;
+	border-bottom: 2px solid black;
+	outline: none;
+}
+
+.book_form_select {
+	width: 20%;
+	padding: 15px 15px;
+	border: none;
+	border-radius: 4px;
+	background-color: #f1f1f1;
 }
 
 .failtext{
