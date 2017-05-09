@@ -33,7 +33,7 @@ $db->GetAllRoomType();
 
 <section id="image"><h1>Willkommen beim Hotel Vallora</h1></section>
 
-<section>
+<section class="main">
   <article id="main">
     <h1>Unser Hotel</h1>
     <p>Bei Ihrem nächsten Aufenthalt in unserer Gegend würden wir Sie gern persönlich begrüßen und mit unserem freundlichen und kompetenten Service verwöhnen.</p>
@@ -57,98 +57,10 @@ $db->GetAllRoomType();
         ?>
       </div>
     </article>
-
-    <article id="booking">
-        <h1>Zimmerreservierungen</h1>
-        <p>Unsere Rezeption ist 24 Stunden besetzt. Sie können auch gern unser Online-Buchungsformular ausfüllen.</p>
-        <div class="space"></div>
-        <form class="form-list" action="GOTDAMIT.php" method="PUT">
-            <ul class="list-vertical">
-                <li>
-                    <h2 class="title">Buchungsformular</h2>
-                    <span class="required_notification">* Sind benötigt</span>
-                </li>
-                <li>
-                    <ul class="list-horizontal">
-                        <li>
-                            <label for="lastname">Name*</label>
-                            <input type="text" name="lastname" placeholder="Müller" />
-                        </li>
-                        <li>
-                            <label for="firstname">Vorname*</label>
-                            <input type="text" name="firstname" placeholder="Peter" />
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="adress">Adresse*</label>
-                    <input type="text" name="adress" placeholder="Musterstrasse 20" />
-                </li>
-                <li>
-                    <ul class="list-horizontal">
-                        <li>
-                            <label for="city">Ort*</label>
-                            <input type="text" name="city" placeholder="Musterort" />
-                        </li>
-                        <li>
-                            <label for="zip">Plz*</label>
-                            <input type="number" name="zip" placeholder="1001" />
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="mail">Email*</label>
-                    <input type="text" name="mail" placeholder="peter.mueller@muster.ch" />
-                </li>
-                <li>
-                    <ul class="list-horizontal">
-                        <li>
-                            <label for="adults">Erwachsene (18+)*</label>
-                            <input type="number" name="adults" placeholder="1" value="1" />
-                        </li>
-                        <li>
-                            <label for="childs">Kinder*</label>
-                            <input type="number" name="childs" placeholder="0" value="0" />
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <ul class="list-horizontal">
-                        <li>
-                            <label for="fromdate">Anreise*</label>
-                            <input type="date" name="fromdate" placeholder="1" value="1" />
-                        </li>
-                        <li>
-                            <label for="tilldate">Voraussichtliche Abreise*</label>
-                            <input type="date" name="tilldate" placeholder="0" value="0" />
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <ul class="list-horizontal">
-                        <li>
-                            <label for="breakfestinroom">Frühstück aufs Zimmer</label>
-                            <input type="checkbox" name="breakfestinroom" value="yes" />
-                        </li>
-                        <li>
-                            <label for="car">Gratis Mietwagen</label>
-                            <input type="checkbox" name="car" value="yes" />
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <input type="submit" value="Senden" />
-                </li>
-            </ul>
-        </form>
-    </article>
-
-
     <article id="path">
         <h1>Wegbeschreibung</h1>
         <p>Fahren Sie in Richtung Küste. Kurz vor dem Ortseingang von Küstendorf biegen Sie links in die Küstenallee ein. Nach der Kurve finden Sie  unser Hotel. Parkmöglichkeiten befinden sich direkt vor dem Hotel.</p>
     </article>
-
     <article id="events">
         <h1>Ausflüge</h1>
 

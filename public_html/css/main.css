@@ -19,7 +19,7 @@ h1 {
 	font-family: 'Yellowtail', cursive;
 	font-size: 24px;
 	font-size: x-large;
-    font-variant: small-caps;
+	font-variant: small-caps;
 	color: #b99b3d;
 }
 
@@ -168,7 +168,7 @@ ul.list li {
 }
 
 .main{
-	width: 45%;
+	width: 40%;
 	height: auto;
 	margin: 0 auto;
 }
@@ -379,14 +379,15 @@ td.centered {
 /* search form rooms */
 .feature-image {
 	float: left;
+	width: 256px;
+	height: auto;
 	max-width: 16em;
 }
 .feature-text {
 	max-width: 65%;
 	margin: 0;
-}
-.feature-submit {
-
+	float: left;
+	display: block;
 }
 
 .height{
