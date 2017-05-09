@@ -10,6 +10,7 @@
   <meta charset="UTF-8">
   <title>Hotel Vallora | Wunderschönes Hotel</title>
   <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="./js/hotel.js"></script>
   <meta charset="UTF-8">
 </head>

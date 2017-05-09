@@ -5,6 +5,7 @@
  Version: 1.0
 */
 
+
 @import url('https://fonts.googleapis.com/css?family=Yellowtail'); /* Font for titles */
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
@@ -99,16 +100,15 @@ header {
 	z-index: 1000;
 	position: fixed;
 	width: 100%;
-	top: 0px;
+	top: 0;
 	color: white;
 	background-color: black;
 }
 
-article, footer div {
-	padding-left: 20px;
+footer div {
 	max-width: 800px;
+	padding: 2vw;
 	margin: 0 auto;
-	margin-bottom: 100px;
 }
 
 article:first-of-type {
@@ -149,8 +149,6 @@ section#image h1 {
 footer {
 	color: white;
 	width: 100%;
-	padding-top: 50px;
-	padding-bottom: 20px;
 	background-color: black;
 	clear: both;
 }
@@ -167,6 +165,12 @@ ul.list li {
 .anchor{
 	content: "";
 	display: none;
+}
+
+.main{
+	width: 45%;
+	height: auto;
+	margin: 0 auto;
 }
 
 .space {
@@ -248,9 +252,40 @@ form {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	margin: 4px 2px;
+	margin: 1vw 0px;
 	cursor: pointer;
 	transition: background 1s;
+}
+
+.book_title{
+	font-family: 'Roboto', sans-serif;
+	color: black;
+}
+
+.roomtype_wrapper{
+	padding: 15px 20px;
+	border-radius: 4px;
+	background-color: #ccc;
+}
+
+input[type=text], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	outline: none;
+	transition: border 1s;
+}
+
+input[type=text]:focus{
+	border-bottom: 3px solid black;
+}
+
+input[type=date]{
+	width: 100%;
 }
 
 .button:hover{
@@ -278,7 +313,7 @@ form input[type=submit] {
 }
 
 .type{
-
+	width: 100%;
 }
 
 form.form-list {
@@ -350,12 +385,16 @@ td.centered {
 	max-width: 16em;
 }
 .feature-text {
-	float: right;
 	max-width: 65%;
 	margin: 0;
 }
 .feature-submit {
-	float: right;
+
+}
+
+.height{
+	content: '';
+	height: 89px;
 }
 
 ul.breadcrumb {
@@ -363,6 +402,7 @@ ul.breadcrumb {
 	list-style: none;
 	background-color: #eee;
 	font-size: 17px;
+	margin: 0;
 }
 ul.breadcrumb li {display: inline;}
 ul.breadcrumb li+li:before {

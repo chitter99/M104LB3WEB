@@ -20,7 +20,7 @@ $template_breadcrumbs = [
 
 <?php require "./../template/header-booking.php"; ?>
 <?php require "./../template/booking-breadcrumb.php"; ?>
-<article id="main">
+<article class="main" id="main">
   <h1>Suchen</h1>
   <p class="roomSearchDescription">
     Finden Sie Ihr Traumzimmer. Für mehr Informationen über die Zimmer finden Sie auf der Startseite.
@@ -36,12 +36,13 @@ $template_breadcrumbs = [
     <h2>Verfügbare Hotelzimmer</h2>
     <?php $rooms = 0; ?>
     <?php foreach($db->GetAllRoomTypeWhereRoomsAreAvariableInDataRange($search_from, $search_to) as $type): ?>
-      <article class="type">
+      <div class="type">
         <h3><?php echo $type['name'] ?></h3>
         <p class="feature-text"><?php echo utf8_encode($type['description']); ?></p>
         <?php if(isset($type['image'])): ?><img class="feature-image" src="<?php echo $type['image']; ?>" alt="<?php echo $type['name']; ?>" /><?php endif; ?>
         <button class="feature-submit button" onclick="javascript: hotel.redirectToBooking('<?php echo $type['ID']; ?>', '<?php echo date("Y-m-d", $search_from); ?>', '<?php echo date("Y-m-d", $search_to); ?>')">Buchen</button>
-      </article>
+      </div>
+      <div class="space"></div>
       <div class="clear" id="top"></div>
       <?php $rooms++; ?>
     <?php endforeach; ?>

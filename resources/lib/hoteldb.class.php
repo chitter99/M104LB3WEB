@@ -15,8 +15,7 @@ class HotelDB extends Database
         // tbl.rentStatus
         $this->insert("rentStatus", ['status' => 'registered']);
         $this->insert("rentStatus", ['status' => 'confirmed']);
-        $this->insert("rentStatus", ['status' => 'checked_in']);
-        $this->insert("rentStatus", ['status' => 'checked_out']);
+        $this->insert("rentStatus", ['status' => 'paid']);
         $this->insert("rentStatus", ['status' => 'canceled']);
         // tbl.invoiceStatus
         $this->insert("invoiceStatus", ['status' => 'registered']);
@@ -157,6 +156,14 @@ class HotelDB extends Database
             "fk_rentstatus" => 1,
             "fk_room" => $roomId
         ]);
+    }
+    public function GetRent($id)
+    {
+        return $this->SelectRent(['ID' => $id]);
+    }
+    public function SelectRent($where=null)
+    {
+        return $this->select('rent', ['*'], $where);
     }
 
     // tbl.Customer
