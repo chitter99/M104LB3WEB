@@ -15,6 +15,8 @@ if(!isset($search_to) || !isset($search_from) || !isset($search_type)) header('L
 // Should be fine now
 
 if($_POST['action'] == "book") {
+    $adults = $_POST['adults'];
+    $childs = $_POST['childs'];
     $search_to = strtotime($search_to);
     $search_from = strtotime($search_from);
     $rentId = $db->RegisterRentForRoom($_POST['room'], [
@@ -26,7 +28,7 @@ if($_POST['action'] == "book") {
         "title" => $_POST['title'],
         "phone" => $_POST['phone'],
         "birthday" => $_POST['birthday']
-    ], $search_from, $search_to);
+    ], $search_from, $search_to, $adults, $childs);
     header('Location: book-done.php?rentId='.$rentId);
 } else {
     $roomType = $db->GetRoomType($search_type);
@@ -76,7 +78,7 @@ $template_breadcrumbs = [
                   <label for="lastname">Name* <input type="text" name="surname" placeholder="Müller"></label>
               </li>
               <li>
-                  <label for="firstname">Vorname* <input type="text" name="name" placeholder="Peter"></label>
+                <label for="firstname">Vorname* <input type="text" name="name" placeholder="Peter"></label>
               </li>
           </ul>
       </li>

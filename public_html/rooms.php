@@ -27,8 +27,8 @@ $template_breadcrumbs = [
     <br>Bitte geben Sie den gewünschten Aufenthaltszeitraum ein.
   </p>
   <form action="" class="searchForm" method="get">
-    <label for="from">Von</label><input class="margin" type="date" name="from" value="<?php echo date("Y-m-d", $search_from); ?>" />
-    <label for="to">Bis</label><input class="margin" type="date" name="to" value="<?php echo date("Y-m-d", $search_to); ?>" />
+    <label for="from">Von</label><input class="margin dateInput" type="date" name="from" value="<?php echo date("Y-m-d", $search_from); ?>" />
+    <label for="to">Bis</label><input class="margin dateInput" type="date" name="to" value="<?php echo date("Y-m-d", $search_to); ?>" />
     <button class="button" type="submit">Suchen</button>
     <?php echo !($search_from < $search_to) ? "<p class=\"failtext\">Das Startdatum darf nich kleiner sein als das Enddatum</p>" : ''; ?>
   </form>
