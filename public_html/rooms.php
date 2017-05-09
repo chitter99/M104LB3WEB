@@ -40,8 +40,9 @@ $template_breadcrumbs = [
         <h3><?php echo $type['name'] ?></h3>
         <p class="feature-text"><?php echo utf8_encode($type['description']); ?></p>
         <?php if(isset($type['image'])): ?><img class="feature-image" src="<?php echo $type['image']; ?>" alt="<?php echo $type['name']; ?>" /><?php endif; ?>
+          <span class="room-price">Pro Tag <?php echo $type['price']; ?> CHF</span>
         <button class="feature-submit button" onclick="javascript: hotel.redirectToBooking('<?php echo $type['ID']; ?>', '<?php echo date("Y-m-d", $search_from); ?>', '<?php echo date("Y-m-d", $search_to); ?>')">Buchen</button>
-      </div>
+        </div>
       <div class="space"></div>
       <div class="clear" id="top"></div>
       <?php $rooms++; ?>

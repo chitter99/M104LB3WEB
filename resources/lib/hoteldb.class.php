@@ -148,10 +148,10 @@ class HotelDB extends Database
     public function InsertRent($roomId, $customerId, $bookFrom, $bookTo)
     {
         return $this->insert("rent", [
-            "rentFrom" => $bookFrom,
-            "rentTo" => $bookTo,
+            "rentFrom" => $this->dateToSQL($bookFrom),
+            "rentTo" => $this->dateToSQL($bookTo),
             "days" => round(abs($bookTo-$bookFrom)/86400),
-            "registered" => time(),
+            "registered" => $this->dateToSQL(time()),
             "fk_customer" => $customerId,
             "fk_rentstatus" => 1,
             "fk_room" => $roomId
@@ -179,6 +179,14 @@ class HotelDB extends Database
             "phone" => $phone,
             "birthday" => $birthday
         ]);
+    }
+    public function GetCustomer($id)
+    {
+        return $this->SelectCustomer(['ID' => $id]);
+    }
+    public function SelectCustomer($where=null)
+    {
+        return $this->select('customer', ['*'], $where);
     }
 
     // Misc Functions
