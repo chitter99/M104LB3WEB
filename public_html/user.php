@@ -10,7 +10,7 @@ $action = "view";
 if(isset($_GET['action'])) $action = $_GET['action'];
 
 if($aciton == "cancel_conf") {
-    $db->
+    $db->UpdateRentStatus($rent['id'], 4);
 }
 
 if($rent['fk_rentStatus'] == 4) $action = "canceled";

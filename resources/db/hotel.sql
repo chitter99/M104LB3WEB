@@ -105,13 +105,12 @@ CREATE TABLE `rent` (
   `ID` int(11) NOT NULL,
   `rentFrom` date NOT NULL,
   `rentTo` date NOT NULL,
-  `days` int(11) NOT NULL,
   `registered` date NOT NULL,
+  `adult` int(11) NOT NULL,
+  `child` int(11) NULL,
   `fk_rentstatus` int(11) NOT NULL,
   `fk_customer` int(11) NOT NULL,
-  `fk_room` int(11) NOT NULL,
-  `adult` int(64) NOT NULL,
-  `child` int(64) NOT NULL
+  `fk_room` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

@@ -17,8 +17,6 @@ if(!isset($search_to) || !isset($search_from) || !isset($search_type)) header('L
 if($_POST['action'] == "book") {
     $adults = $_POST['adults'];
     $childs = $_POST['childs'];
-    $search_to = strtotime($search_to);
-    $search_from = strtotime($search_from);
     $rentId = $db->RegisterRentForRoom($_POST['room'], [
         "name" => $_POST['name'],
         "surname" => $_POST['surname'],

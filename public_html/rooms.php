@@ -3,7 +3,7 @@
 require_once(realpath(dirname(__FILE__) . "/../resources/config.php"));
 $db = GetDB();
 
-$search_from = isset($_GET['form']) ? strtotime($_GET['form']) : time();
+$search_from = isset($_GET['from']) ? strtotime($_GET['from']) : time();
 $search_to = isset($_GET['to']) ? strtotime($_GET['to']) : strtotime("+1 week");
 
 $_SESSION['form']['searchroom']['from'] = $search_from;
@@ -11,7 +11,7 @@ $_SESSION['form']['searchroom']['to'] = $search_to;
 
 $template_breadcrumbs = [
     [
-        'link' => 'rooms.php?to=' . $search_to . '&from=' . $search_from,
+        'link' => 'rooms.php?to=' . date("Y-m-d", $search_to) . '&from=' . date("Y-m-d", $search_from),
         'display' => 'Suchen'
     ]
 ];
@@ -38,7 +38,7 @@ $template_breadcrumbs = [
     <?php foreach($db->GetAllRoomTypeWhereRoomsAreAvariableInDataRange($search_from, $search_to) as $type): ?>
       <div class="type">
         <h3><?php echo $type['name'] ?></h3>
-        <p class="feature-text"><?php echo utf8_encode($type['description']); ?></p>
+        <p class="feature-text"><?php echo htmlspecialchars($type['description']); ?></p>
         <?php if(isset($type['image'])): ?><img class="feature-image" src="<?php echo $type['image']; ?>" alt="<?php echo $type['name']; ?>" /><?php endif; ?>
         <span class="room-price">Pro Tag <b><?php echo $type['price']; ?></b> CHF</span>
         <div class="clear" id="top"></div>
