@@ -93,8 +93,7 @@ class Database{
 
     public function parseArrayToSQLList($arr, $glue=null)
     {
-      //for($i = 0, $len = count($arr); $i < $len; ++$i) $arr[$i] = $glue == null ? $this->parseTypeSave($arr[$i]) : $glue . $arr[$i] . $glue;
-      for($i=0;$i < count($arr);$i++)
+      for($i=0, $len = count($arr);$i < $len;$i++)
       {
         if($glue == null)
         {

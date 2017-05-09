@@ -6,10 +6,13 @@ $db = GetDB();
 if(!isset($_GET['id'])) header('location: index.php');
 $rent = $db->GetRent($_GET['id']);
 
-
-
 $action = "view";
 if(isset($_GET['action'])) $action = $_GET['action'];
+
+if($aciton == "cancel_conf") {
+    $db->
+}
+
 if($rent['fk_rentStatus'] == 4) $action = "canceled";
 
 ?>
@@ -19,15 +22,13 @@ if($rent['fk_rentStatus'] == 4) $action = "canceled";
 <article id="user">
     <h1>Deine Buchung</h1>
     <p>Zimmer Type: <?php $db->GetRoomType($rent['fk_roomType'])['name'] ?></p>
-    <?php if($rent['rentFrom'] > new Date()): ?>
     <button onclick="hotel.storRent('<?php echo $_GET['id']; ?>')">Buchung Abrechen</button>
-    <?php endif; ?>
 </article>
 <?php endif; ?>
 <?php if($action == "cancel"): ?>
     <script>
         window.onload = function() {
-            if(prompt('Bist du dir sicher das du die Buchung abbrechen möchtest? Dies kann später nicht mehr geänder werden!')) {
+            if(confirm('Bist du dir sicher das du die Buchung abbrechen möchtest? Dies kann später nicht mehr geänder werden!')) {
                 window.location.href = "user.php?id=<?php echo $_GET['id']; ?>&action=cancel_conf";
             } else {
                 window.location.href = "user.php?id=<?php echo $_GET['id']; ?>";

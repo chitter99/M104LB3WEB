@@ -81,13 +81,13 @@ $template_breadcrumbs = [
           </ul>
       </li>
       <li>
-          <label>Mail* <input type="text" name="adress" placeholder="Musterstrasse 20"></label>
+          <label>Mail* <input type="text" name="mail" placeholder="Musterstrasse 20"></label>
       </li>
       <li>
           <label>Telefonnummer* <input type="text" name="phone" placeholder="000 0000 00 00"></label>
       </li>
       <li>
-          <label for="adress">Adresse* <input type="text" name="adress" placeholder="Musterstrasse 20"></label>
+          <label for="adress">Adresse* <input type="text" name="address" placeholder="Musterstrasse 20"></label>
       </li>
       <li>
           <label for="adress">Geburtstag* <input size="5" type="date" name="birthday"></label>

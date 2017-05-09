@@ -21,10 +21,13 @@ $template_breadcrumbs = [
     ]
 ];
 
+$url = "user.php?id=" . $rent;
+
 ?>
 <?php require "./../template/header-booking.php"; ?>
 <?php require "./../template/booking-breadcrumb.php"; ?>
 <article id="book">
-    <p>You booked successfully. Your rent Id is <?php echo $rent; ?></p>
+    <p>Buchung erfolgreich abgeschlossen, drücken Sie <a href="<?php echo $url; ?>">hier</a> um die Details Ihrer Buchung einzusehen.</p>
+    <p>Ihre Buchung wird von uns überprüft und dannach bestätigt.</p>
 </article>
 <?php require "./../template/footer.php"; ?>

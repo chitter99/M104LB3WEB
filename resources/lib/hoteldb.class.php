@@ -159,11 +159,15 @@ class HotelDB extends Database
     }
     public function GetRent($id)
     {
-        return $this->SelectRent(['ID' => $id]);
+        return $this->SelectRent(['ID' => $id])->fetch_all(MYSQLI_ASSOC)[0];
     }
     public function SelectRent($where=null)
     {
         return $this->select('rent', ['*'], $where);
+    }
+    public function UpdateRentStatus($id, $new)
+    {
+        $this->query("UPDATE `rent` SET `fk_rentstatus` = $new WHERE `id` = $id");
     }
 
     // tbl.Customer
