@@ -393,6 +393,10 @@ td.centered {
 	display: block;
 }
 
+.room-price{
+  float: left;
+}
+
 .height{
 	content: '';
 	height: 89px;
