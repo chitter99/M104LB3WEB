@@ -160,7 +160,11 @@ class HotelDB extends Database
     }
     public function GetRent($id)
     {
-        return $this->SelectRent(['ID' => $id])->fetch_all(MYSQLI_ASSOC)[0];
+        $rent = $this->SelectRent(['ID' => $id])->fetch_all(MYSQLI_ASSOC)[0];
+        $room = $this->GetRoom($rent['fk_room']); $roomType = $this->GetRoomType($room['fk_roomType']);
+        $estTotalCosts = (round(abs(strtotime($rent['rentTo']) - strtotime($rent['rentFrom']))/86400) * $roomType['price']) * ($rent['adult'] + $rent['child']);
+        $rent['estTotalCosts'] = $estTotalCosts;
+        return $rent;
     }
     public function SelectRent($where=null)
     {
@@ -187,7 +191,7 @@ class HotelDB extends Database
     }
     public function GetCustomer($id)
     {
-        return $this->SelectCustomer(['ID' => $id]);
+        return $this->SelectCustomer(['ID' => $id])->fetch_all(MYSQLI_ASSOC)[0];
     }
     public function SelectCustomer($where=null)
     {

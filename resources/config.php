@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 
 define('LIBRARY_PATH', realpath(dirname(__FILE__) . '/lib'));
 define('RESOURCES_PATH', realpath(dirname(__FILE__)));
