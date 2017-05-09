@@ -52,61 +52,80 @@ $template_breadcrumbs = [
     <p class="book_title">Du hast <b><?php echo $roomType['name']; ?></b> als Raumart ausgewählt.</p>
   </div>
   <div class="space"></div>
-  <form action="" method="POST">
+  <form action="" method="POST" class="form-list">
     <input type="hidden" name="action" value="book" />
     <!--Meta Data-->
     <input type="hidden" name="type" value="<?php echo $search_type; ?>" />
     <input type="hidden" name="from" value="<?php echo $search_to; ?>" />
     <input type="hidden" name="to" value="<?php echo $search_from ?>" />
-    <label>
-      Anrede:
-      <select id="dd" class="wrapper-dropdown-1" tabindex="1" autofocus name="title">
-        <option value="--Bitte wählen--">--Bitte Wählen--</option>
-        <?php foreach($db->GetAllTitle() as $title): ?>
-        <option value="<?php echo $title['ID']; ?>"><?php echo $title['title']; ?></option>
-        <?php endforeach; ?>
-      </select>
-    </label>
-    <label>
-      Nachname:
-      <input type="text" name="surname"/>
-    </label>
-    <label>
-      Vorname:
-      <input type="text" name="name" />
-    </label>
-    <label>
-      Mail:
-      <input type="text" name="mail" />
-    </label>
-    <label>
-      Telefonnummer:
-      <input type="text" name="phone" />
-    </label>
-    <label>
-      Adresse:
-      <input type="text" name="address" />
-    </label>
-    <label>
-      Geburtstag:
-      <input size="5" type="date" name="birthday" />
-    </label>
-    <label>
-      Stadt:
-      <select name="city">
-          <?php foreach($db->GetAllCity() as $city): ?>
-          <option value="<?php echo $city['ID']; ?>"><?php echo $city['plz'] . ' ' . $city['city']; ?></option>
-          <?php endforeach; ?>
-      </select>
-    </label>
-    <label>Room:
-      <select name="room">
-          <?php foreach($db->SelectRoom(['fk_roomType' => $roomType['ID']])->fetch_all(MYSQLI_ASSOC) as $room): ?>
-              <option value="<?php echo $room['ID']; ?>"><?php echo $room['roomNumber']; ?></option>
-          <?php endforeach; ?>
-      </select>
-    </label>
-    <button class="button" type="submit">Buchen</button>
+    <ul class="list-vertical">
+      <li>
+          <label>
+              Anrede:
+              <select id="dd" class="wrapper-dropdown-1" tabindex="1" autofocus name="title">
+                  <option value="--Bitte wählen--">--Bitte Wählen--</option>
+                  <?php foreach($db->GetAllTitle() as $title): ?>
+                      <option value="<?php echo $title['ID']; ?>"><?php echo $title['title']; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </label>
+      </li>
+      <li>
+          <ul class="list-horizontal">
+              <li>
+                  <label for="lastname">Name* <input type="text" name="surname" placeholder="Müller"></label>
+              </li>
+              <li>
+                  <label for="firstname">Vorname* <input type="text" name="name" placeholder="Peter"></label>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <label>Mail* <input type="text" name="adress" placeholder="Musterstrasse 20"></label>
+      </li>
+      <li>
+          <label>Telefonnummer* <input type="text" name="phone" placeholder="000 0000 00 00"></label>
+      </li>
+      <li>
+          <label for="adress">Adresse* <input type="text" name="adress" placeholder="Musterstrasse 20"></label>
+      </li>
+      <li>
+          <label for="adress">Geburtstag* <input size="5" type="date" name="birthday"></label>
+      </li>
+      <li>
+          <label for="adress">
+              Stadt*
+              <select name="city">
+                  <?php foreach($db->GetAllCity() as $city): ?>
+                      <option value="<?php echo $city['ID']; ?>"><?php echo $city['plz'] . ' ' . $city['city']; ?></option>
+                  <?php endforeach; ?>
+              </select>
+          </label>
+      </li>
+      <li>
+          <ul class="list-horizontal">
+              <li>
+                  <label for="adults">Erwachsene (18+)*</label>
+                  <input type="number" name="adults" placeholder="1" value="1">
+              </li>
+              <li>
+                  <label for="childs">Kinder*</label>
+                  <input type="number" name="childs" placeholder="0" value="0">
+              </li>
+          </ul>
+      </li>
+      <label>
+          Raum:
+          <select name="room">
+              <?php foreach($db->SelectRoom(['fk_roomType' => $roomType['ID']])->fetch_all(MYSQLI_ASSOC) as $room): ?>
+                  <option value="<?php echo $room['ID']; ?>"><?php echo $room['roomNumber']; ?></option>
+              <?php endforeach; ?>
+          </select>
+      </label>
+      <li>
+          <input type="submit" class="button" value="Senden">
+      </li>
+    </ul>
     <div class="space"></div>
   </form>
 </article>
