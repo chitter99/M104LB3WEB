@@ -337,19 +337,22 @@ form.form-list ul {
 }
 
 form.form-list label {
-
+	width: 100px;
+	display: inline-block;
 }
 
 ul.list-vertical li {
-	margin: 20px 0;
+	margin: 0;
+	margin: 10px 20px;
 }
 
 ul.list-horizontal li {
-	margin-right: 5%; width: 45%;
+	margin: 0;
 	display: inline-block;
 }
-ul.list-horizontal li:last-of-type {
-	margin-right: 0;
+
+form.form-list ul li:first-of-type {
+	margin: 0;
 }
 
 /* Table */

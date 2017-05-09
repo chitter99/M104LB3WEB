@@ -145,16 +145,17 @@ class HotelDB extends Database
         return $this->select('room', ['*'], $where);
     }
     // tbl.Rent
-    public function InsertRent($roomId, $customerId, $bookFrom, $bookTo)
+    public function InsertRent($roomId, $customerId, $bookFrom, $bookTo, $adults, $childs)
     {
         return $this->insert("rent", [
             "rentFrom" => $this->dateToSQL($bookFrom),
             "rentTo" => $this->dateToSQL($bookTo),
-            "days" => round(abs($bookTo-$bookFrom)/86400),
             "registered" => $this->dateToSQL(time()),
             "fk_customer" => $customerId,
             "fk_rentstatus" => 1,
-            "fk_room" => $roomId
+            "fk_room" => $roomId,
+            "adult" => $adults,
+            "child" => $childs
         ]);
     }
     public function GetRent($id)
@@ -194,11 +195,11 @@ class HotelDB extends Database
     }
 
     // Misc Functions
-    public function RegisterRentForRoom($roomId, $customerArr, $bookFrom, $bookTo)
+    public function RegisterRentForRoom($roomId, $customerArr, $bookFrom, $bookTo, $adults, $childs)
     {
         if(!$this->GetIsRoom($roomId)) return false;
-        $customerId = $this->InsertCustomer($customerArr['name'], $customerArr['surname'], $customerArr['mail'], $customerArr['address'], $customerArr['city'], $customerArr['title'], $customerArr['phone'], $customerArr['birthday']);
-        $rentId = $this->InsertRent($roomId, $customerId, $bookFrom, $bookTo);
+        $customerId = $this->InsertCustomer($customerArr['name'], $customerArr['surname'], $customerArr['mail'], $customerArr['address'], $customerArr['city'], $customerArr['title'], $customerArr['phone'], $customerArr['birthday'], $customerArr['adults'], $customerArr['childs']);
+        $rentId = $this->InsertRent($roomId, $customerId, $bookFrom, $bookTo, $adults, $childs);
         return $rentId;
     }
 
